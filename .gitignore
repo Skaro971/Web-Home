@@ -1,0 +1,6 @@
+node_modules/
+dist/
+extension/assets/
+.env
+.env.local
+*.local

@@ -1,0 +1,65 @@
+.weather {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 2px solid var(--color-accent-2);
+  clip-path: var(--clip);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  position: relative;
+  transition: filter 0.25s;
+}
+
+.weather:hover {
+  filter: var(--glow-red);
+}
+
+.weather::before {
+  content: 'ENV.DATA';
+  position: absolute;
+  top: 0.45rem;
+  right: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  color: var(--color-accent-2);
+  opacity: 0.5;
+}
+
+.weather--loading,
+.weather--error {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.weather__location {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--color-accent-2);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  opacity: 0.75;
+}
+
+.weather__temp {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-accent-2);
+  text-shadow: 0 0 10px rgba(255, 0, 68, 0.7);
+}
+
+.weather__condition {
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+.weather__wind {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+}

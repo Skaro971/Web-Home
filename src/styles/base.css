@@ -1,0 +1,64 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg:      #020408;
+  --color-surface: #050d1a;
+  --color-border:  #0d2545;
+  --color-text:       #c8deff;
+  --color-text-muted: #2e5480;
+
+  --color-accent:   #00cfff;
+  --color-accent-2: #ff0044;
+  --color-accent-3: #a020f0;
+
+  --glow-blue:   drop-shadow(0 0 6px rgba(0,207,255,0.9))  drop-shadow(0 0 20px rgba(0,207,255,0.35));
+  --glow-red:    drop-shadow(0 0 6px rgba(255,0,68,0.9))   drop-shadow(0 0 20px rgba(255,0,68,0.35));
+  --glow-purple: drop-shadow(0 0 6px rgba(160,32,240,0.9)) drop-shadow(0 0 20px rgba(160,32,240,0.35));
+
+  --font-sans: system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+  --radius: 2px;
+  --gap: 1.25rem;
+
+  /* coin coupé cyberpunk (haut-droit + bas-gauche) */
+  --clip: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-bg);
+  background-image:
+    linear-gradient(rgba(0, 140, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 140, 255, 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* vignette circulaire assombrissant les côtés */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 60% at 50% 45%,
+    transparent 25%,
+    rgba(0, 0, 0, 0.82) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+#app {
+  position: relative;
+  z-index: 1;
+}

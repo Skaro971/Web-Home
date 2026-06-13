@@ -1,0 +1,45 @@
+.clock {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 2px solid var(--color-accent);
+  clip-path: var(--clip);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  transition: filter 0.25s;
+}
+
+.clock:hover {
+  filter: var(--glow-blue);
+}
+
+.clock::before {
+  content: 'SYS.TIME';
+  position: absolute;
+  top: 0.45rem;
+  right: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  opacity: 0.5;
+}
+
+.clock__time {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  text-shadow: 0 0 10px rgba(0, 207, 255, 0.7);
+}
+
+.clock__date {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
