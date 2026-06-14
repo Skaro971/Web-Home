@@ -1,6 +1,6 @@
 # Web Home
 
-Extension Brave/Chrome qui remplace le nouvel onglet par une page d'accueil personnalisable au style cyberpunk.
+Extension Chrome qui remplace le nouvel onglet par une page d'accueil personnalisable.
 
 ---
 
