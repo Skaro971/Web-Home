@@ -41,12 +41,12 @@ Extension Chrome qui remplace le nouvel onglet par une page d'accueil personnali
 
 6 fonds animés :
 
-- **Grille** — grille de points
-- **Particules** — nuage de particules
-- **Circuit** — tracés électroniques avec impulsions lumineuses
-- **Topographie** — lignes avec effet horizon
-- **Scanlines** — effet CRT avec glitch
-- **Réseau neuronal** — nœuds connectés en mouvement
+- **Grille** - grille de points
+- **Particules** - nuage de particules
+- **Circuit** - tracés électroniques avec impulsions lumineuses
+- **Topographie** - lignes avec effet horizon
+- **Scanlines** - effet CRT avec glitch
+- **Réseau neuronal** - nœuds connectés en mouvement
 
 ### Import / Export
 
@@ -63,7 +63,7 @@ Extension Chrome qui remplace le nouvel onglet par une page d'accueil personnali
 2. Extraire dans un dossier
 3. Ouvrir `brave://extensions` (ou `chrome://extensions`)
 4. Activer le **Mode développeur**
-5. Cliquer **Charger l'extension décompressée** → sélectionner le dossier extrait
+5. Cliquer **Charger l'extension décompressée** -> sélectionner le dossier extrait
 6. Dans Paramètres -> Apparence -> **Page Nouvel onglet** -> choisir **Web Home**
 
 ---
