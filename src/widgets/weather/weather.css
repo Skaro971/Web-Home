@@ -8,11 +8,13 @@
   flex-direction: column;
   gap: 0.3rem;
   position: relative;
-  transition: filter 0.25s;
+  filter: drop-shadow(0 0 0 transparent);
+  transition: filter 0.3s, border-color 0.3s;
 }
 
 .weather:hover {
-  filter: var(--glow-red);
+  border-color: rgba(255, 0, 68, 0.25);
+  filter: drop-shadow(0 0 8px rgba(255, 0, 68, 0.22)) drop-shadow(0 0 20px rgba(255, 0, 68, 0.08));
 }
 
 .weather::before {

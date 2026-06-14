@@ -1,0 +1,139 @@
+.todo {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 2px solid var(--color-accent-2);
+  clip-path: var(--clip);
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+  filter: drop-shadow(0 0 0 transparent);
+  transition: filter 0.3s, border-color 0.3s;
+}
+
+.todo:hover {
+  border-color: rgba(255, 0, 68, 0.25);
+  filter: drop-shadow(0 0 8px rgba(255, 0, 68, 0.22)) drop-shadow(0 0 20px rgba(255, 0, 68, 0.08));
+}
+
+.todo__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.todo__title {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-accent-2);
+}
+
+.todo__count {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+}
+
+.todo__form {
+  padding: 0.7rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.todo__input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  outline: none;
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 0.3rem 0;
+  transition: border-color 0.15s;
+}
+
+.todo__input:focus {
+  border-color: var(--color-accent-2);
+}
+
+.todo__input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.todo__list {
+  list-style: none;
+  overflow-y: auto;
+  flex: 1;
+  padding: 0.4rem 0;
+}
+
+.todo__item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 1.25rem;
+  transition: background 0.15s;
+}
+
+.todo__item:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.todo__item--done .todo__text {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.todo__check {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-accent-2);
+  font-size: 0.55rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: border-color 0.15s;
+}
+
+.todo__check:hover {
+  border-color: var(--color-accent-2);
+}
+
+.todo__text {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-text);
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.todo__delete {
+  background: transparent;
+  border: none;
+  color: transparent;
+  font-size: 0.6rem;
+  cursor: pointer;
+  padding: 0.1rem 0.3rem;
+  transition: color 0.15s;
+}
+
+.todo__item:hover .todo__delete {
+  color: var(--color-text-muted);
+}
+
+.todo__delete:hover {
+  color: var(--color-accent-2) !important;
+}

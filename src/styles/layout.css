@@ -1,25 +1,12 @@
-#app {
+/* Gridstack base overrides */
+.grid-stack {
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 240px 1fr 240px;
-  grid-template-rows: auto 1fr;
-  grid-template-areas:
-    "clock  center  weather"
-    ".      notes   .";
-  gap: var(--gap);
-  padding: var(--gap);
-  max-width: 1400px;
-  margin: 0 auto;
-  align-items: start;
 }
 
-#widget-clock   { grid-area: clock; }
-#widget-weather { grid-area: weather; }
-#widget-notes   { grid-area: notes; margin-top: calc(var(--gap) * 0.5); }
-
-.center-stack {
-  grid-area: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+/* All widget roots must fill their gridstack cell */
+.grid-stack-item-content > * {
+  height: 100%;
+  box-sizing: border-box;
 }
+
+/* Boot animation targets .grid-stack-item-content (see boot.css) */

@@ -1,0 +1,97 @@
+.shortcuts {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 2px solid var(--color-accent);
+  clip-path: var(--clip);
+  display: flex;
+  flex-direction: column;
+  filter: drop-shadow(0 0 0 transparent);
+  transition: filter 0.3s, border-color 0.3s;
+}
+
+.shortcuts:hover {
+  border-color: rgba(0, 207, 255, 0.25);
+  filter: drop-shadow(0 0 8px rgba(0, 207, 255, 0.22)) drop-shadow(0 0 20px rgba(0, 207, 255, 0.08));
+}
+
+.shortcuts__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.shortcuts__title {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+}
+
+.shortcuts__edit-btn {
+  padding: 0.3rem 0.8rem;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.shortcuts__edit-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.shortcuts__body {
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  overflow-y: auto;
+}
+
+.shortcuts__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.shortcuts__cat {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--color-accent);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+  opacity: 0.7;
+}
+
+.shortcuts__row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.shortcuts__keys {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  padding: 0.15rem 0.4rem;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+.shortcuts__desc {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+}

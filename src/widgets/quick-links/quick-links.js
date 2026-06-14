@@ -12,13 +12,28 @@ function saveLinks(links) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(links))
 }
 
+export function faviconUrl(url) {
+  try {
+    return `https://icons.duckduckgo.com/ip3/${new URL(url).hostname}.ico`
+  } catch {
+    return ''
+  }
+}
+
 function render(container, links) {
   container.innerHTML = `
     <div class="quick-links-wrapper">
       <div class="quick-links">
         ${links.map(link => `
           <a class="quick-links__item" href="${link.url}" target="_blank" rel="noopener">
-            <span class="quick-links__icon">${link.icon}</span>
+            <span class="quick-links__icon">
+              <img
+                src="${faviconUrl(link.url)}"
+                alt="${link.label}"
+                width="20" height="20"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+              /><span class="quick-links__icon-fallback">${link.label[0].toUpperCase()}</span>
+            </span>
             <span class="quick-links__label">${link.label}</span>
           </a>
         `).join('')}

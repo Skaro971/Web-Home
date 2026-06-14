@@ -8,11 +8,13 @@
   flex-direction: column;
   gap: 0.5rem;
   position: relative;
-  transition: filter 0.25s;
+  filter: drop-shadow(0 0 0 transparent);
+  transition: filter 0.3s, border-color 0.3s;
 }
 
 .clock:hover {
-  filter: var(--glow-blue);
+  border-color: rgba(0, 207, 255, 0.25);
+  filter: drop-shadow(0 0 8px rgba(0, 207, 255, 0.22)) drop-shadow(0 0 20px rgba(0, 207, 255, 0.08));
 }
 
 .clock::before {

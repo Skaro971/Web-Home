@@ -8,15 +8,57 @@
     <link rel="stylesheet" href="/src/styles/layout.css" />
   </head>
   <body>
-    <main id="app">
-      <div id="widget-clock"></div>
-      <div class="center-stack">
-        <div id="widget-search"></div>
-        <div id="widget-quick-links"></div>
+    <div id="ctrl-bar"></div>
+
+    <div class="grid-stack" id="app">
+
+      <div class="grid-stack-item" gs-id="shortcuts"
+           gs-x="0" gs-y="0" gs-w="20" gs-h="36" id="widget-shortcuts">
+        <div class="grid-stack-item-content"></div>
       </div>
-      <div id="widget-weather"></div>
-      <div id="widget-notes"></div>
-    </main>
+
+      <div class="grid-stack-item" gs-id="clock"
+           gs-x="20" gs-y="0" gs-w="20" gs-h="12" id="widget-clock">
+        <div class="grid-stack-item-content"></div>
+      </div>
+
+      <div class="grid-stack-item" gs-id="pomodoro"
+           gs-x="20" gs-y="12" gs-w="20" gs-h="24" id="widget-pomodoro">
+        <div class="grid-stack-item-content"></div>
+      </div>
+
+      <div class="grid-stack-item" gs-id="search"
+           gs-x="40" gs-y="0" gs-w="48" gs-h="8" id="widget-search">
+        <div class="grid-stack-item-content"></div>
+      </div>
+
+      <div class="grid-stack-item" gs-id="quick-links"
+           gs-x="40" gs-y="8" gs-w="48" gs-h="12" id="widget-quick-links">
+        <div class="grid-stack-item-content"></div>
+      </div>
+
+      <div class="grid-stack-item" gs-id="notes"
+           gs-x="40" gs-y="20" gs-w="48" gs-h="16" id="widget-notes">
+        <div class="grid-stack-item-content"></div>
+      </div>
+
+      <div class="grid-stack-item" gs-id="weather"
+           gs-x="88" gs-y="0" gs-w="20" gs-h="12" id="widget-weather">
+        <div class="grid-stack-item-content"></div>
+      </div>
+
+      <div class="grid-stack-item" gs-id="rss"
+           gs-x="88" gs-y="12" gs-w="20" gs-h="24" id="widget-rss">
+        <div class="grid-stack-item-content"></div>
+      </div>
+
+      <div class="grid-stack-item" gs-id="todo"
+           gs-x="108" gs-y="0" gs-w="20" gs-h="36" id="widget-todo">
+        <div class="grid-stack-item-content"></div>
+      </div>
+
+    </div>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

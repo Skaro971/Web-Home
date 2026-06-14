@@ -8,11 +8,14 @@
   border: 1px solid var(--color-border);
   border-top: 2px solid var(--color-accent-3);
   clip-path: var(--clip);
-  transition: filter 0.25s;
+  filter: drop-shadow(0 0 0 transparent);
+  transition: filter 0.3s, border-color 0.3s;
 }
 
+.search__form:hover,
 .search__form:focus-within {
-  filter: var(--glow-purple);
+  border-color: rgba(160, 32, 240, 0.35);
+  filter: drop-shadow(0 0 8px rgba(160, 32, 240, 0.22)) drop-shadow(0 0 20px rgba(160, 32, 240, 0.08));
 }
 
 .search__input {

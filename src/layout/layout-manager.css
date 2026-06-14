@@ -1,0 +1,140 @@
+/* Control bar — fixed bottom-right */
+#ctrl-bar {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 200;
+}
+
+.ctrl-btn {
+  padding: 0.35rem 0.85rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.ctrl-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.ctrl-btn.is-active {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Full-screen grid overlay — sits above widgets so grid is visible everywhere */
+#edit-grid-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 207, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 207, 255, 0.055) 1px, transparent 1px);
+  background-size: var(--edit-col-w, 15px) var(--edit-cell-h, 22px);
+  background-position: var(--edit-offset-x, 0px) var(--edit-offset-y, 0px);
+  pointer-events: none;
+  z-index: 4;
+}
+
+#edit-grid-overlay.is-visible {
+  display: block;
+}
+
+/* Item outline in edit mode */
+#app.is-editing .grid-stack-item {
+  outline: 1px dashed rgba(0, 207, 255, 0.2);
+  outline-offset: -1px;
+}
+
+
+/* Drag placeholder */
+.grid-stack-placeholder > .placeholder-content {
+  border: 1px dashed rgba(0, 207, 255, 0.4) !important;
+  background: rgba(0, 207, 255, 0.05) !important;
+}
+
+/* Resize handle */
+.ui-resizable-se {
+  width: 10px !important;
+  height: 10px !important;
+  right: 3px !important;
+  bottom: 3px !important;
+  background: rgba(0, 207, 255, 0.4) !important;
+  cursor: se-resize !important;
+}
+
+/* Close (✕) button on each widget in edit mode */
+.widget-close-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--color-accent-2);
+  color: var(--color-accent-2);
+  font-size: 0.55rem;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s;
+}
+.widget-close-btn:hover {
+  background: var(--color-accent-2);
+  color: #000;
+}
+
+/* Hidden widgets panel — anchored above WIDGETS button */
+#widgets-panel {
+  position: fixed;
+  bottom: 3rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 0.6rem;
+  z-index: 201;
+  min-width: 140px;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+.widgets-panel__chip {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s, color 0.2s;
+}
+.widgets-panel__chip:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.widgets-panel__empty {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--color-text-muted);
+  padding: 0.2rem 0.3rem;
+}

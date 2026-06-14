@@ -1,4 +1,5 @@
 import './quick-links-editor.css'
+import { faviconUrl } from './quick-links.js'
 
 export function openEditor(links, onSave) {
   let current = links.map(l => ({ ...l }))
@@ -15,7 +16,6 @@ export function openEditor(links, onSave) {
       <form class="ql-editor__form" id="ql-form">
         <p class="ql-editor__form-title">Ajouter un lien</p>
         <div class="ql-editor__fields">
-          <input class="ql-editor__input" id="ql-icon"  type="text" placeholder="Emoji" maxlength="2" />
           <input class="ql-editor__input" id="ql-label" type="text" placeholder="Nom" required />
           <input class="ql-editor__input" id="ql-url"   type="url" placeholder="https://..." required />
           <button class="ql-editor__btn ql-editor__btn--add" type="submit">Ajouter</button>
@@ -30,7 +30,10 @@ export function openEditor(links, onSave) {
     const list = overlay.querySelector('#ql-list')
     list.innerHTML = current.map((link, i) => `
       <li class="ql-editor__item">
-        <span class="ql-editor__item-icon">${link.icon}</span>
+        <span class="ql-editor__item-icon">
+          <img src="${faviconUrl(link.url)}" alt="${link.label}" width="16" height="16"
+               onerror="this.style.display='none'" />
+        </span>
         <span class="ql-editor__item-label">${link.label}</span>
         <span class="ql-editor__item-url">${link.url}</span>
         <div class="ql-editor__item-actions">
@@ -61,10 +64,9 @@ export function openEditor(links, onSave) {
 
   overlay.querySelector('#ql-form').addEventListener('submit', e => {
     e.preventDefault()
-    const icon  = overlay.querySelector('#ql-icon').value.trim() || '🔗'
     const label = overlay.querySelector('#ql-label').value.trim()
     const url   = overlay.querySelector('#ql-url').value.trim()
-    current.push({ icon, label, url })
+    current.push({ label, url })
     renderList()
     e.target.reset()
   })

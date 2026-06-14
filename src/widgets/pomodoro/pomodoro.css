@@ -1,0 +1,94 @@
+.pomodoro {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 2px solid var(--color-accent);
+  clip-path: var(--clip);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  filter: drop-shadow(0 0 0 transparent);
+  transition: filter 0.3s, border-color 0.3s;
+}
+
+.pomodoro:hover {
+  border-color: rgba(0, 207, 255, 0.25);
+  filter: drop-shadow(0 0 8px rgba(0, 207, 255, 0.22)) drop-shadow(0 0 20px rgba(0, 207, 255, 0.08));
+}
+
+.pomodoro__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pomodoro__label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+  transition: color 0.4s;
+}
+
+.pomodoro__sessions {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+}
+
+.pomodoro__time {
+  font-family: var(--font-mono);
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  transition: color 0.4s, text-shadow 0.4s;
+}
+
+.pomodoro__track {
+  height: 2px;
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.pomodoro__bar {
+  height: 100%;
+  width: 0%;
+  background: var(--color-accent);
+  transition: width 0.9s linear, background 0.4s;
+}
+
+.pomodoro__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pomodoro__btn {
+  padding: 0.4rem 0.75rem;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+  letter-spacing: 0.06em;
+}
+
+.pomodoro__btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.pomodoro__btn--main {
+  flex: 1;
+  font-weight: 700;
+  font-size: 0.78rem;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.pomodoro__btn--main:hover {
+  background: rgba(0, 207, 255, 0.06);
+}

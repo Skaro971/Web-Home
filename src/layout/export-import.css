@@ -1,0 +1,13 @@
+#export-import-bar {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 200;
+}
+
+/* label acts as button — cursor fix */
+#export-import-bar label.ctrl-btn {
+  cursor: pointer;
+}

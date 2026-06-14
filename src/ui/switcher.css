@@ -1,0 +1,113 @@
+#theme-panel {
+  position: fixed;
+  top: 3.2rem;
+  right: 1rem;
+  width: 220px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 2px solid var(--color-accent);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  z-index: 190;
+  transform: translateX(calc(100% + 1.5rem));
+  opacity: 0;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s;
+  pointer-events: none;
+}
+
+#theme-panel.is-open {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.tp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tp-title {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+}
+
+.tp-close {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.15s;
+}
+.tp-close:hover { color: var(--color-accent-2); }
+
+.tp-section {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.tp-section:last-child { border-bottom: none; }
+
+.tp-label {
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.tp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.tp-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.tp-btn:hover {
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.tp-btn.is-active {
+  color: var(--preview, var(--color-accent));
+  border-color: var(--preview, var(--color-accent));
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Palette swatch dot */
+.tp-swatch {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--preview, var(--color-accent));
+  flex-shrink: 0;
+}
+
+/* Background grid (2 cols) */
+.tp-bg-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem;
+}

@@ -1,7 +1,13 @@
+/* overflow visible so hover lift (translateY) doesn't clip at widget boundary */
+#widget-quick-links .grid-stack-item-content {
+  overflow: visible;
+}
+
 .quick-links-wrapper {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+  padding-top: 5px; /* buffer for hover lift */
 }
 
 .quick-links__edit-btn {
@@ -46,14 +52,65 @@
   transition: filter 0.2s, transform 0.2s, border-color 0.2s;
 }
 
+.quick-links__item::before,
+.quick-links__item::after {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.quick-links__item::before {
+  top: 5px;
+  left: 5px;
+  border-top: 1.5px solid var(--color-accent-3);
+  border-left: 1.5px solid var(--color-accent-3);
+}
+
+.quick-links__item::after {
+  bottom: 5px;
+  right: 5px;
+  border-bottom: 1.5px solid var(--color-accent-2);
+  border-right: 1.5px solid var(--color-accent-2);
+}
+
 .quick-links__item:hover {
   border-color: var(--color-accent);
   filter: var(--glow-blue);
   transform: translateY(-3px);
 }
 
+.quick-links__item:hover::before,
+.quick-links__item:hover::after {
+  opacity: 1;
+}
+
 .quick-links__icon {
-  font-size: 1.4rem;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quick-links__icon img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.quick-links__icon-fallback {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-accent);
 }
 
 .quick-links__label {

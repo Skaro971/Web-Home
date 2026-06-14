@@ -15,9 +15,9 @@
   --color-accent-2: #ff0044;
   --color-accent-3: #a020f0;
 
-  --glow-blue:   drop-shadow(0 0 6px rgba(0,207,255,0.9))  drop-shadow(0 0 20px rgba(0,207,255,0.35));
-  --glow-red:    drop-shadow(0 0 6px rgba(255,0,68,0.9))   drop-shadow(0 0 20px rgba(255,0,68,0.35));
-  --glow-purple: drop-shadow(0 0 6px rgba(160,32,240,0.9)) drop-shadow(0 0 20px rgba(160,32,240,0.35));
+  --glow-blue:   drop-shadow(0 0 5px rgba(0,207,255,0.28))  drop-shadow(0 0 14px rgba(0,207,255,0.1));
+  --glow-red:    drop-shadow(0 0 5px rgba(255,0,68,0.28))   drop-shadow(0 0 14px rgba(255,0,68,0.1));
+  --glow-purple: drop-shadow(0 0 5px rgba(160,32,240,0.28)) drop-shadow(0 0 14px rgba(160,32,240,0.1));
 
   --font-sans: system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
@@ -25,7 +25,6 @@
   --radius: 2px;
   --gap: 1.25rem;
 
-  /* coin coupé cyberpunk (haut-droit + bas-gauche) */
   --clip: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
 }
 
@@ -35,16 +34,73 @@ html, body {
 
 body {
   background-color: var(--color-bg);
-  background-image:
-    linear-gradient(rgba(0, 140, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 140, 255, 0.045) 1px, transparent 1px);
-  background-size: 44px 44px;
   color: var(--color-text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
 
-/* vignette circulaire assombrissant les côtés */
+/* Background: grid (default) */
+body.bg-grid {
+  background-image:
+    linear-gradient(rgba(0, 140, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 140, 255, 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* Background: CRT scanlines — static layer */
+body.bg-scanlines::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 207, 255, 0.04) 0px,
+    rgba(0, 207, 255, 0.04) 1px,
+    rgba(0, 0, 0, 0.18)     1px,
+    rgba(0, 0, 0, 0.18)     2px,
+    transparent              2px,
+    transparent              4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Glitch triggered by JS at random 4-9s intervals */
+body.scanlines-flash::before {
+  animation: scanline-glitch 0.6s steps(1) forwards;
+}
+
+body.scanlines-flash::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  animation: scanline-tear 0.6s steps(1) forwards;
+}
+
+@keyframes scanline-glitch {
+  0%   { transform: none;                           opacity: 1;    filter: none; }
+  15%  { transform: translateX(-5px) scaleX(1.01);  opacity: 0.75; filter: hue-rotate(80deg) brightness(1.3); }
+  30%  { transform: translateX(7px);                opacity: 0.9;  filter: hue-rotate(-40deg); }
+  45%  { transform: translateX(-3px) scaleY(0.99);  opacity: 1;    filter: brightness(1.6) hue-rotate(120deg); }
+  60%  { transform: none;                            opacity: 1;    filter: none; }
+  78%  { transform: translateX(4px);                opacity: 0.85; filter: hue-rotate(30deg); }
+  90%  { transform: none;                            opacity: 1;    filter: none; }
+  100% { transform: none;                            opacity: 1;    filter: none; }
+}
+
+@keyframes scanline-tear {
+  0%   { background: none; }
+  15%  { background: linear-gradient(transparent 38%, rgba(0,207,255,0.25) 38.5%, rgba(0,207,255,0.25) 39%, transparent 39%); }
+  30%  { background: linear-gradient(transparent 62%, rgba(255,0,68,0.2)   62.5%, rgba(255,0,68,0.2)   63%, transparent 63%); }
+  45%  { background: none; }
+  78%  { background: linear-gradient(transparent 51%, rgba(0,207,255,0.15) 51.3%, rgba(0,207,255,0.15) 51.8%, transparent 51.8%); }
+  90%  { background: none; }
+  100% { background: none; }
+}
+
+/* Vignette */
 body::after {
   content: '';
   position: fixed;
@@ -55,10 +111,57 @@ body::after {
     rgba(0, 0, 0, 0.82) 100%
   );
   pointer-events: none;
-  z-index: 0;
+  z-index: 2;
 }
 
+/* z-index stack: canvas(0) < scanlines(1) < vignette(2) < app(3) < ctrl(200) */
 #app {
   position: relative;
-  z-index: 1;
+  z-index: 3;
+}
+
+/* ── Scrollbars ───────────────────────────────────────────── */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+/* No scrollbar on widgets that shouldn't scroll */
+#widget-search   .grid-stack-item-content,
+#widget-pomodoro .grid-stack-item-content,
+#widget-clock    .grid-stack-item-content,
+#widget-weather  .grid-stack-item-content {
+  overflow: hidden;
+  scrollbar-width: none;
+}
+#widget-search   .grid-stack-item-content::-webkit-scrollbar,
+#widget-pomodoro .grid-stack-item-content::-webkit-scrollbar,
+#widget-clock    .grid-stack-item-content::-webkit-scrollbar,
+#widget-weather  .grid-stack-item-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Chromium / Brave */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }

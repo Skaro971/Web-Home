@@ -7,5 +7,6 @@ export default defineConfig({
   build: {
     outDir: 'extension',
     emptyOutDir: false,
+    modulePreload: { polyfill: false },
   },
 })
