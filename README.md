@@ -64,7 +64,7 @@ Extension Chrome qui remplace le nouvel onglet par une page d'accueil personnali
 3. Ouvrir `brave://extensions` (ou `chrome://extensions`)
 4. Activer le **Mode développeur**
 5. Cliquer **Charger l'extension décompressée** → sélectionner le dossier extrait
-6. Dans Paramètres → Apparence → **Page Nouvel onglet** → choisir **Web Home**
+6. Dans Paramètres -> Apparence -> **Page Nouvel onglet** -> choisir **Web Home**
 
 ---
 
