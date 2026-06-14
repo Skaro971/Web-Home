@@ -10,22 +10,22 @@ Extension Chrome qui remplace le nouvel onglet par une page d'accueil personnali
 
 | Widget | Description |
 |---|---|
-| **Horloge** | Heure en temps réel avec effet glitch |
-| **Météo** | Météo locale via Open-Meteo (géolocalisation automatique) |
-| **Recherche** | Barre de recherche (DuckDuckGo par défaut) |
-| **Liens rapides** | Raccourcis personnalisables avec icônes DuckDuckGo |
+| **Horloge** | Heure en temps réel |
+| **Météo** | Météo locale |
+| **Recherche** | Barre de recherche |
+| **Liens rapides** | Raccourcis personnalisables |
 | **Notes** | Bloc-notes persistant |
-| **Timer Pomodoro** | Minuteur 25/5 min avec sessions configurables |
-| **Todo** | Liste de tâches avec cases à cocher |
-| **Raccourcis** | Grille de favoris avec icônes personnalisables |
-| **Flux RSS** | Agrégateur multi-flux avec rafraîchissement automatique (30 min) |
+| **Timer Pomodoro** | Minuteur Pomodoro |
+| **Todo** | Liste de tâches |
+| **Raccourcis** | Grille de favoris |
+| **Flux RSS** | News |
 
 ### Disposition
 
 - **Mode disposition** : réorganiser et redimensionner les widgets librement sur une grille de 128 colonnes
 - **Masquer/afficher** des widgets individuellement
-- **Sauvegarder** une disposition personnalisée comme disposition par défaut
-- **Mode focus** : masque tous les widgets secondaires pour ne garder que l'essentiel
+- **Sauvegarder** une disposition personnalisée
+- **Mode focus** : masque tous les widgets secondaires
 
 ### Apparence
 
@@ -42,11 +42,11 @@ Extension Chrome qui remplace le nouvel onglet par une page d'accueil personnali
 6 fonds animés :
 
 - **Grille** — grille de points
-- **Particules** — nuage de particules interactif
-- **Circuit** — tracés électroniques animés avec impulsions lumineuses
-- **Topographie** — lignes de niveau avec effet horizon
-- **Scanlines** — effet CRT avec glitch aléatoire
-- **Réseau neuronal** — nœuds connectés en mouvement lent
+- **Particules** — nuage de particules
+- **Circuit** — tracés électroniques avec impulsions lumineuses
+- **Topographie** — lignes avec effet horizon
+- **Scanlines** — effet CRT avec glitch
+- **Réseau neuronal** — nœuds connectés en mouvement
 
 ### Import / Export
 
@@ -121,7 +121,7 @@ Les nouveaux utilisateurs démarreront avec cette configuration.
 
 ## Stack technique
 
-- **Vite** — bundler
+- **Vite** - bundler
 - **Gridstack.js** — grille de widgets drag & drop
 - **Canvas API** — effets de fond animés
 - **Manifest V3** — format d'extension Brave/Chrome
